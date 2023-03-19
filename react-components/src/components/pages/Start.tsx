@@ -1,4 +1,5 @@
 import wines from 'data/cards';
+import WinesCard from './WinesCard';
 import React, { Component } from 'react';
 import './Start.css';
 import { IWines } from 'components/interface/interface';
@@ -63,7 +64,29 @@ class Start extends Component<IStartPageProps, IState> {
       return wines.wine.toLowerCase().includes(searchInput.toLowerCase());
     });
 
-    return <></>;
+    return (
+      <>
+        <div className="wine-search">
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchInput}
+              onChange={this.handleChange}
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <h3>Start page</h3>
+        <div className="wine-cards-container">
+          {filterWines.length ? (
+            filterWines.map((product) => <WinesCard product={product} key={product.id} />)
+          ) : (
+            <p>No such wine...</p>
+          )}
+        </div>
+      </>
+    );
   }
 }
 

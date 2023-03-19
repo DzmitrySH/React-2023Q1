@@ -31,10 +31,30 @@
   background-color: #fff;
 }
 
+.wine-search button[type="submit"] {
+  width: 80px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.wine-search button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+.wine-search button[type="submit"]:active {
+  background-color: rgb(101, 236, 83);
+}
+
 .wine-search {
   flex-grow: 1;
 }
-
 
 @media screen and (max-width: 1024px) {
   .wines-cards-container {
