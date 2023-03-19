@@ -77,7 +77,6 @@ class Start extends Component<IStartPageProps, IState> {
             <button type="submit">Search</button>
           </form>
         </div>
-        {/* <h3>Start page</h3> */}
         <div className="wines-cards-container">
           {filterWines.length ? (
             filterWines.map((product) => <WinesCard product={product} key={product.id} />)
