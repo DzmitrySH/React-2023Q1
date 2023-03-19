@@ -1,8 +1,8 @@
-import wines from 'data/cards';
+import wines from '../../data/cards';
 import WinesCard from './WinesCard';
 import React, { Component } from 'react';
 import './Start.css';
-import { IWines } from 'components/interface/interface';
+import { IWines } from '../interface/interface';
 
 interface IState {
   wines: IWines[];
@@ -33,7 +33,7 @@ class Start extends Component<IStartPageProps, IState> {
     this.unloadListener = () => {
       localStorage.setItem('searchValue', this.state.searchInput);
     };
-    window.addEventListener('beforeValue', this.unloadListener);
+    window.addEventListener('beforeunload', this.unloadListener);
 
     this.setState({
       wines: wines,
@@ -43,7 +43,7 @@ class Start extends Component<IStartPageProps, IState> {
   componentWillUnmount() {
     localStorage.setItem('searchValue', this.state.searchInput);
     if (this.unloadListener) {
-      window.removeEventListener('beforeValue', this.unloadListener);
+      window.removeEventListener('beforeunload', this.unloadListener);
     }
   }
 
@@ -77,12 +77,12 @@ class Start extends Component<IStartPageProps, IState> {
             <button type="submit">Search</button>
           </form>
         </div>
-        <h3>Start page</h3>
-        <div className="wine-cards-container">
+        {/* <h3>Start page</h3> */}
+        <div className="wines-cards-container">
           {filterWines.length ? (
             filterWines.map((product) => <WinesCard product={product} key={product.id} />)
           ) : (
-            <p>No such wine...</p>
+            <h3>No such wine...</h3>
           )}
         </div>
       </>

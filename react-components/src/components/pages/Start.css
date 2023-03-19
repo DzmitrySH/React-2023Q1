@@ -1,7 +1,7 @@
 .wines-cards-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0 auto;
   max-width: 1500px;
   padding: 0 1rem;
@@ -10,21 +10,24 @@
 
 .wine-search {
   margin-bottom: 0.5rem;
-  background-color: #343a40;
+  background-color: #6c8573;
   padding: 0.5rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .wine-search form {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .wine-search input[type="text"] {
-  width: 200px;
+  width: 400px;
   height: 20px;
   margin-right: 10px;
   border: none;
-  border-radius: 20px;
+  border-radius: 4px;
   padding: 5px 10px;
   font-size: 16px;
   color: #333;
@@ -35,11 +38,11 @@
   width: 80px;
   height: 30px;
   border: none;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: #008cff;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
@@ -49,7 +52,7 @@
 }
 
 .wine-search button[type="submit"]:active {
-  background-color: rgb(101, 236, 83);
+  background-color: rgb(182, 236, 83);
 }
 
 .wine-search {

@@ -22,7 +22,7 @@ export class Header extends Component<IHeaderProps> {
               <NavLink to="/">Start Page</NavLink>
               <NavLink to="/about">About Page</NavLink>
             </div>
-            <h6 className="current-page">Current Page: {namePage}</h6>
+            <h6 className="current-page">{namePage}</h6>
           </nav>
         </header>
       </>

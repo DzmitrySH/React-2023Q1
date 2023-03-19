@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './NotFound.css';
 
 interface IPageError {
   changeNamePage: (namePage: string) => void;
@@ -11,8 +12,10 @@ class NotFound extends Component<IPageError> {
   render() {
     return (
       <>
-        <h3>Page not found 404</h3>
-        <h3>Unexpected error has occurred</h3>
+        <div className="content-notfound">
+          <h3>Page not found 404</h3>
+          <h3>Unexpected error has occurred</h3>
+        </div>
       </>
     );
   }

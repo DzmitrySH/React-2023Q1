@@ -1,7 +1,9 @@
 .header {
-  background-color: #343a40;
+  background-color: #6c8573;
   color: #fff;
   padding: 0.5rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +15,7 @@
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .pge-navigation-links {
@@ -20,7 +23,7 @@
 }
 
 .page-navigation-links>* {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0.2rem;
   margin-right: 10px;

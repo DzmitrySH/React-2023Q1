@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './About.css';
 
 interface IAboutPage {
   changeNamePage: (namePage: string) => void;
@@ -12,7 +13,9 @@ class About extends Component<IAboutPage> {
   render() {
     return (
       <>
-        <h3>Welcome to the AboutPage!</h3>
+        <div className="content-about">
+          <h3>Welcome to the AboutPage!</h3>
+        </div>
       </>
     );
   }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Start from 'components/pages/Start';
-import Header from 'components/pages/Header';
-import About from 'components/pages/About';
-import NotFound from 'components/pages/NotFound';
+import Start from './components/pages/Start';
+import Header from './components/pages/Header';
+import About from './components/pages/About';
+import NotFound from './components/pages/NotFound';
 
 interface IStateApp {
   updatePage: string;
