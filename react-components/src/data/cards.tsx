@@ -1,6 +1,6 @@
 import { IWines } from 'components/interface/interface';
 
-export const wines: IWines[] = [
+const wines: IWines[] = [
   {
     id: 1,
     winery: 'Maselva',
@@ -202,3 +202,5 @@ export const wines: IWines[] = [
     image: 'https://images.vivino.com/thumbs/uGWcfBB7TA-1yvsHLnoz1g_375x500.jpg',
   },
 ];
+
+export default wines;

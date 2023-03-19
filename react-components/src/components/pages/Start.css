@@ -1,0 +1,55 @@
+.wines-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1500px;
+  padding: 0 1rem;
+  gap: 8px;
+}
+
+.wine-search {
+  margin-bottom: 0.5rem;
+  background-color: #343a40;
+  padding: 0.5rem;
+}
+
+.wine-search form {
+  display: flex;
+  align-items: center;
+}
+
+.wine-search input[type="text"] {
+  width: 200px;
+  height: 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+}
+
+.wine-search {
+  flex-grow: 1;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .wines-cards-container {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wines-cards-container {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wines-cards-container {
+    justify-content: center;
+  }
+}
