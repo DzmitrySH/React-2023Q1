@@ -7,18 +7,13 @@ interface InputDateProps {
 }
 
 class DateNew extends Component<InputDateProps> {
-  static now() {
-    throw new Error('Method not implemented.');
-  }
   render() {
     const { valid, dateRef } = this.props;
     return (
       <div className="form-input">
         <label htmlFor="date-input">
-          Date of registration:
-          {!valid && (
-            <span className="form-input-span-error">Error: No date or product from the future</span>
-          )}
+          Date of harvest year:
+          {!valid && <span className="form-input-span-error">No date or product</span>}
         </label>
         <input type="date" id="date-input" ref={dateRef} />
       </div>

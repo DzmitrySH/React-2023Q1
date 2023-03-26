@@ -13,7 +13,7 @@ class Category extends Component<IinputCategoryProps> {
     return (
       <div className="form-input">
         <label htmlFor="category-select">
-          Category: {!valid && <span className="form-input-span-error">Error</span>}
+          Category: {!valid && <span className="form-input-span-error">Select</span>}
         </label>
         <select
           id="category-select"

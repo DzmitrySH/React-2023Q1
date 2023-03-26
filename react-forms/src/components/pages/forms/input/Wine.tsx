@@ -14,9 +14,7 @@ class Wine extends Component<InputWineProps> {
         <label htmlFor="description-input">
           Description wine:
           {!valid && (
-            <span className="form-input-span-error">
-              Error: First letter is capital, 5 characters
-            </span>
+            <span className="form-input-span-error">First letter is capital, 5 characters</span>
           )}
         </label>
         <textarea

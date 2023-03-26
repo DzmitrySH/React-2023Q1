@@ -13,7 +13,7 @@ class Price extends Component<InputPriceProps> {
       <div className="form-input">
         <label htmlFor="price-input">
           Price:
-          {!valid && <span className="form-input-span-error">Error</span>}
+          {!valid && <span className="form-input-span-error">Cost wine</span>}
         </label>
         <input
           type="number"

@@ -13,7 +13,7 @@ class StatusForm extends Component<InputStatusProps> {
         <label htmlFor="category-select">
           Status: {valid && <span style={{ color: 'green' }}>Card added</span>}
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit form</button>
       </div>
     );
   }

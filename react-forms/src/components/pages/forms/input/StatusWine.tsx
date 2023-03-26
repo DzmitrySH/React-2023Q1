@@ -14,8 +14,8 @@ class StatusWine extends Component<IinputStatusWineProps> {
       <div className="form-input">
         <div className="radio-label">
           <label>
-            Choose product status:
-            {!valid && <span className="form-input-span-error">Error</span>}
+            Wine product:
+            {!valid && <span className="form-input-span-error">Select</span>}
           </label>
         </div>
         <div className="radio-buttons">

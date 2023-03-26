@@ -14,9 +14,7 @@ class Winery extends Component<InputWineryProps> {
         <label htmlFor="title-input">
           Winery:{' '}
           {!valid && (
-            <span className="form-input-span-error">
-              Error: not First letter is capital, 5 characters
-            </span>
+            <span className="form-input-span-error">First letter is capital, 5 characters</span>
           )}
         </label>
         <input type="text" id="title-input" ref={wineryRef} placeholder="name product: Wine..." />

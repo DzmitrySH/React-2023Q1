@@ -13,7 +13,7 @@ class Images extends Component<IinputImageProps> {
     return (
       <div className="form-input">
         <label htmlFor="image-input">
-          Image: {!valid && <span className="form-input-span-error">Error</span>}
+          Image In: {!valid && <span className="form-input-span-error">Add image</span>}
         </label>
         <input
           type="file"

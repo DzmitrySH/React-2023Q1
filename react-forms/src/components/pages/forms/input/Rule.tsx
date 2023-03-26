@@ -14,7 +14,7 @@ class Rule extends Component<InputRuleProps> {
         <label htmlFor="rule-input">
           <input type="checkbox" id="rule-input" data-testid="rule-input" ref={ruleRef} />
           Iam already 18 years old.
-          {!valid && <span className="form-input-span-error">Error</span>}
+          {!valid && <span className="form-input-span-error">No?</span>}
         </label>
       </div>
     );
