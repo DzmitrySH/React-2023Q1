@@ -6,6 +6,7 @@ import About from '../components/pages/About';
 import Header from '../components/pages/Header';
 import Start from '../components/pages/Start';
 // import WinesCard from '../components/pages/WinesCard';
+import CardForm from '../components/pages/forms/CardForm';
 import { MemoryRouter } from 'react-router';
 import { fn } from 'jest-mock';
 
@@ -50,5 +51,26 @@ describe('<Header />', () => {
       </MemoryRouter>
     );
     expect(screen.queryAllByText(`${namePage}`)).toBeTruthy();
+  });
+});
+
+describe('FormInput', () => {
+  const productCard = {
+    id: Date.now(),
+    winery: 'Wine title',
+    wine: 'Wine description',
+    price: 199,
+    date: '2022-03-18',
+    statusWine: 'new',
+    category: 'aperitivo',
+    imageInput: 'https://example.com/image.jpg',
+  };
+
+  test('renders wine title and category', () => {
+    const { getByText } = render(<CardForm product={productCard} />);
+    const titleElement = getByText(/Wine title/i);
+    const categoryElement = getByText(/Category: aperitivo/i);
+    // expect(titleElement).toBeInTheDocument();
+    // expect(categoryElement).toBeInTheDocument();
   });
 });
