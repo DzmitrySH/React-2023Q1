@@ -13,4 +13,29 @@ interface IWinesProps {
   product: IWines;
 }
 
-export { IWines, IWinesProps };
+interface ICardWine {
+  id?: number;
+  winery: string;
+  wine: string;
+  price: number;
+  date: string;
+  statusWine: string;
+  category: string;
+  imageInput: string;
+}
+
+interface ICardWineProps {
+  product: ICardWine;
+}
+
+interface IFormWineProps {
+  changeProduct: (newProduct: ICardWine) => void;
+}
+
+enum Category {
+  starwine = 'star wine',
+  oldwine = 'old wine',
+  aperitivo = 'aperitivo',
+}
+
+export { IWines, IWinesProps, ICardWine, ICardWineProps, IFormWineProps, Category };
