@@ -32,10 +32,32 @@ interface IFormWineProps {
   changeProduct: (newProduct: ICardWine) => void;
 }
 
-enum Category {
+interface IFormInputState {
+  imageInput: string;
+  imageFile: File | null;
+  fileValid: boolean;
+  priceValid: boolean;
+  wineryValid: boolean;
+  categoryValid: boolean;
+  wineValid: boolean;
+  dateValid: boolean;
+  statusWineValid: boolean;
+  rulesValid: boolean;
+  statusValid: boolean;
+}
+
+enum CategoryEnum {
   starswine = 'stars wine',
   oldwine = 'old wine',
   aperitivo = 'aperitivo',
 }
 
-export { IWines, IWinesProps, ICardWine, ICardWineProps, IFormWineProps, Category };
+export {
+  IWines,
+  IWinesProps,
+  ICardWine,
+  ICardWineProps,
+  IFormWineProps,
+  IFormInputState,
+  CategoryEnum,
+};
