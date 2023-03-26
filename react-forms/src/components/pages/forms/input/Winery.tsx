@@ -19,7 +19,7 @@ class Winery extends Component<InputWineryProps> {
             </span>
           )}
         </label>
-        <input type="text" id="title-input" ref={wineryRef} placeholder="name product: Phone..." />
+        <input type="text" id="title-input" ref={wineryRef} placeholder="name product: Wine..." />
       </div>
     );
   }

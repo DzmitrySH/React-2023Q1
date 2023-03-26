@@ -35,15 +35,15 @@ interface IFormWineProps {
 interface IFormInputState {
   imageInput: string;
   imageFile: File | null;
-  fileValid: boolean;
-  priceValid: boolean;
-  wineryValid: boolean;
-  categoryValid: boolean;
-  wineValid: boolean;
-  dateValid: boolean;
-  statusWineValid: boolean;
-  rulesValid: boolean;
-  statusValid: boolean;
+  inFileValid: boolean;
+  inPriceValid: boolean;
+  inWineryValid: boolean;
+  inCategoryValid: boolean;
+  inWineValid: boolean;
+  inDateValid: boolean;
+  inStatusWineValid: boolean;
+  inRulesValid: boolean;
+  inStatusValid: boolean;
 }
 
 enum CategoryEnum {

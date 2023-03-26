@@ -6,7 +6,10 @@ interface InputDateProps {
   dateRef: RefObject<HTMLInputElement>;
 }
 
-class Date extends Component<InputDateProps> {
+class DateNew extends Component<InputDateProps> {
+  static now() {
+    throw new Error('Method not implemented.');
+  }
   render() {
     const { valid, dateRef } = this.props;
     return (
@@ -23,4 +26,4 @@ class Date extends Component<InputDateProps> {
   }
 }
 
-export default Date;
+export default DateNew;
