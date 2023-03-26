@@ -33,7 +33,7 @@ interface IFormWineProps {
 }
 
 enum Category {
-  starwine = 'star wine',
+  starswine = 'stars wine',
   oldwine = 'old wine',
   aperitivo = 'aperitivo',
 }
