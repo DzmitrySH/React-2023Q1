@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './About.css';
 
 interface IAboutPage {
   changeNamePage: (namePage: string) => void;
 }
 
-class About extends Component<IAboutPage> {
-  componentDidMount() {
-    this.props.changeNamePage('About Page');
-  }
+function About({ changeNamePage }: IAboutPage) {
+  useEffect(() => {
+    changeNamePage('About Page');
+  }, [changeNamePage]);
 
-  render() {
-    return (
-      <>
-        <div className="content-about">
-          <h3>Welcome to the AboutPage!</h3>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="content-about">
+        <h3>Welcome to the AboutPage!</h3>
+      </div>
+    </>
+  );
 }
 
 export default About;
