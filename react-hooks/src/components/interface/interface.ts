@@ -46,6 +46,17 @@ interface IFormInputState {
   inStatusValid: boolean;
 }
 
+interface IFormData {
+  winery: string;
+  wine: string;
+  price: number;
+  date: string;
+  rules: boolean;
+  statusWine: string;
+  category: string;
+  imageFile: FileList;
+}
+
 enum CategoryEnum {
   starswine = 'stars wine',
   oldwine = 'old wine',
@@ -59,5 +70,6 @@ export {
   ICardWineProps,
   IFormWineProps,
   IFormInputState,
+  IFormData,
   CategoryEnum,
 };
