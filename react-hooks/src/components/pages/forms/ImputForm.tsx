@@ -80,7 +80,7 @@ function InputForm({ changeProduct }: IFormWineProps) {
       />
       <Images
         error={errors.imageFile}
-        register={register('imageFile', { required: 'true' })}
+        register={register('imageFile', { required: true })}
         imageFile={imageFile}
       />
       <DateNew
@@ -96,7 +96,7 @@ function InputForm({ changeProduct }: IFormWineProps) {
       {/* <StatusForm register={statusValid} /> */}
       <div className="form-input">
         <label htmlFor="category-select">
-          Status: {statusValid && <span style={{ color: 'green' }}>Card added</span>}
+          Status: {statusValid && <span style={{ color: 'green' }}>Wine added</span>}
         </label>
         <button type="submit">Submit Form</button>
       </div>

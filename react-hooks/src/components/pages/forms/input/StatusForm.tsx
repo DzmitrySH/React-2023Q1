@@ -9,7 +9,7 @@ function StatusForm(register: InputStatusProps) {
   return (
     <div className="form-input">
       <label htmlFor="category-select">
-        Status: {register && <span style={{ color: 'green' }}>Card added</span>}
+        Status: {register && <span style={{ color: 'green' }}>Wine added</span>}
       </label>
       <button type="submit">Submit form</button>
     </div>

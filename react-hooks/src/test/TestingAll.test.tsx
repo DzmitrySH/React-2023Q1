@@ -5,8 +5,7 @@ import NotFound from '../components/pages/NotFound';
 import About from '../components/pages/About';
 import Header from '../components/pages/Header';
 import Start from '../components/pages/Start';
-// import WinesCard from '../components/pages/WinesCard';
-import CardForm from '../components/pages/forms/CardForm';
+import validDate from '../components/pages/forms/input/Validator';
 import { MemoryRouter } from 'react-router';
 import { fn } from 'jest-mock';
 
@@ -54,23 +53,14 @@ describe('<Header />', () => {
   });
 });
 
-describe('FormInput', () => {
-  const productCard = {
-    id: Date.now(),
-    winery: 'Wine title',
-    wine: 'Wine description',
-    price: 199,
-    date: '2022-03-18',
-    statusWine: 'new',
-    category: 'aperitivo',
-    imageInput: 'https://example.com/image.jpg',
-  };
+describe('validDate', () => {
+  test('returns true if input date is valid and not in the future', () => {
+    const value = '2022-01-01';
+    expect(validDate(value)).toBe(true);
+  });
 
-  test('renders wine title and category', () => {
-    const { getByText } = render(<CardForm product={productCard} />);
-    const titleElement = getByText(/Wine title/i);
-    const categoryElement = getByText(/Category: aperitivo/i);
-    // expect(titleElement).toBeInTheDocument();
-    // expect(categoryElement).toBeInTheDocument();
+  test('returns false if input date is invalid or in the future', () => {
+    const value = 'invalid-date';
+    expect(validDate(value)).toBe(false);
   });
 });
