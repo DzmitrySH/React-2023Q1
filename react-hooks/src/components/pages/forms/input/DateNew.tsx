@@ -1,24 +1,21 @@
-import React, { RefObject } from 'react';
-import { Component } from 'react';
+import React from 'react';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 interface InputDateProps {
-  valid: boolean;
-  dateRef: RefObject<HTMLInputElement>;
+  register: UseFormRegisterReturn<'date'>;
+  error: FieldError | undefined;
 }
 
-class DateNew extends Component<InputDateProps> {
-  render() {
-    const { valid, dateRef } = this.props;
-    return (
-      <div className="form-input">
-        <label htmlFor="date-input">
-          Date of harvest year:
-          {!valid && <span className="form-input-span-error">No date or product</span>}
-        </label>
-        <input type="date" id="date-input" ref={dateRef} />
-      </div>
-    );
-  }
+function DateNew({ register, error }: InputDateProps) {
+  return (
+    <div className="form-input">
+      <label htmlFor="date-input">
+        Date of harvest year:
+        {error && <span className="form-input-span-error">No date or product</span>}
+      </label>
+      <input type="date" id="date-input" {...register} />
+    </div>
+  );
 }
 
 export default DateNew;
