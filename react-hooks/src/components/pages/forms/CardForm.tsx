@@ -12,11 +12,11 @@ function CardForm({ product }: ICardWineProps) {
       </div>
       <div className="form-card__info">
         <h2>{wine}</h2>
+        <p>{winery}</p>
         <p>Category: {category}</p>
         <p>Price: ${price}</p>
-        <p>Date of issue: {date}</p>
+        <p>Date of harvest: {date}</p>
         <p>Product status: {statusWine}</p>
-        <p>{winery}</p>
       </div>
     </div>
   );

@@ -11,11 +11,12 @@ function WinesCard({ product }: IWinesProps) {
 
   const { id, winery, wine, rating, reviews, price, location, image } = product;
   const title = 'wine image none';
+  const defaults = '☺';
 
   return (
     <div data-testid={`wines-card${id}`} className="wines-card" id={`wines-card${id}`}>
       <div className="wines-card__image">
-        <img src={image} alt={title} onError={handleThumbnailError} />
+        <img src={thumbnailError ? defaults : image} alt={title} onError={handleThumbnailError} />
       </div>
       <div className="wines-card__info">
         <h2>Producer: {winery}</h2>

@@ -1,15 +1,15 @@
 import React from 'react';
-import { FieldError } from 'react-hook-form';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 interface InputStatusProps {
-  error: FieldError | undefined;
+  register: UseFormRegisterReturn<'form'>;
 }
 
-function StatusForm(error: InputStatusProps) {
+function StatusForm(register: InputStatusProps) {
   return (
     <div className="form-input">
       <label htmlFor="category-select">
-        Status: {error && <span style={{ color: 'green' }}>Card added</span>}
+        Status: {register && <span style={{ color: 'green' }}>Card added</span>}
       </label>
       <button type="submit">Submit form</button>
     </div>

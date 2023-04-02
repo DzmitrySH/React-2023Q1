@@ -10,7 +10,7 @@ interface IFormWineProps {
 
 function Form({ changeNamePage }: IFormWineProps) {
   useEffect(() => {
-    changeNamePage('Form');
+    changeNamePage('Form Page');
   });
 
   const [products, setWinProduct] = useState<ICardWine[]>([]);

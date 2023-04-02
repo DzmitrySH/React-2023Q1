@@ -14,7 +14,7 @@ function Images({ error, register, imageFile }: IinputImageProps) {
         Image In: {error && <span className="form-input-span-error">Add image</span>}
       </label>
       <input type="file" accept="image/jpeg,image/png,image/gif" id="image-input" {...register} />
-      {imageFile && <span>{imageFile}</span>}
+      {<span>{imageFile}</span>}
     </div>
   );
 }

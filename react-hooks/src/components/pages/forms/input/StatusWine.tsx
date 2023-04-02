@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 interface IinputStatusWineProps {
-  register: UseFormRegisterReturn<'wineStatus'>;
+  register: UseFormRegisterReturn<'statusWine'>;
   error: FieldError | undefined;
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 interface InputRuleProps {
-  register: UseFormRegisterReturn<'rule'>;
+  register: UseFormRegisterReturn<'rules'>;
   error: FieldError | undefined;
 }
 
