@@ -1,30 +1,27 @@
-import React, { RefObject } from 'react';
-import { Component } from 'react';
+import React from 'react';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
-interface InputWineProps {
-  valid: boolean;
-  wineRef: RefObject<HTMLTextAreaElement>;
+interface IinputWineProps {
+  register: UseFormRegisterReturn<'wine'>;
+  error: FieldError | undefined;
 }
 
-class Wine extends Component<InputWineProps> {
-  render() {
-    const { valid, wineRef } = this.props;
-    return (
-      <div className="form-input">
-        <label htmlFor="description-input">
-          Description wine:
-          {!valid && (
-            <span className="form-input-span-error">First letter is capital, 5 characters</span>
-          )}
-        </label>
-        <textarea
-          ref={wineRef}
-          id="description-input"
-          placeholder="description product: Wine is very..."
-        />
-      </div>
-    );
-  }
+function Wine({ register, error }: IinputWineProps) {
+  return (
+    <div className="form-input">
+      <label htmlFor="description-input">
+        Description wine:
+        {error && (
+          <span className="form-input-span-error">First letter is capital, 5 characters</span>
+        )}
+      </label>
+      <textarea
+        {...register}
+        id="description-input"
+        placeholder="description product: Wine is very..."
+      />
+    </div>
+  );
 }
 
 export default Wine;

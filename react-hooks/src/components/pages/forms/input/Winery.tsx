@@ -1,26 +1,23 @@
-import React, { RefObject } from 'react';
-import { Component } from 'react';
+import React from 'react';
+import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 interface InputWineryProps {
-  valid: boolean;
-  wineryRef: RefObject<HTMLInputElement>;
+  register: UseFormRegisterReturn<'winery'>;
+  error: FieldError | undefined;
 }
 
-class Winery extends Component<InputWineryProps> {
-  render() {
-    const { valid, wineryRef } = this.props;
-    return (
-      <div className="form-input">
-        <label htmlFor="title-input">
-          Winery:{' '}
-          {!valid && (
-            <span className="form-input-span-error">First letter is capital, 5 characters</span>
-          )}
-        </label>
-        <input type="text" id="title-input" ref={wineryRef} placeholder="name product: Wine..." />
-      </div>
-    );
-  }
+function Winery({ register, error }: InputWineryProps) {
+  return (
+    <div className="form-input">
+      <label htmlFor="title-input">
+        Winery:{' '}
+        {error && (
+          <span className="form-input-span-error">First letter is capital, 5 characters</span>
+        )}
+      </label>
+      <input {...register} type="text" id="title-input" placeholder="name product: Wine..." />
+    </div>
+  );
 }
 
 export default Winery;
