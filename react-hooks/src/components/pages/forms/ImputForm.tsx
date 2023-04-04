@@ -8,7 +8,6 @@ import DateNew from './input/DateNew';
 import Images from './input/Images';
 import Price from './input/Price';
 import Rule from './input/Rule';
-// import StatusForm from './input/StatusForm';
 import StatusWine from './input/StatusWine';
 import Wine from './input/Wine';
 import Winery from './input/Winery';
@@ -93,7 +92,6 @@ function InputForm({ changeProduct }: IFormWineProps) {
       <Rule error={errors.rules} register={register('rules', { required: true })} />
       <StatusWine error={errors.statusWine} register={register('statusWine', { required: true })} />
       <Category error={errors.category} register={register('category', { required: true })} />
-      {/* <StatusForm register={statusValid} /> */}
       <div className="form-input">
         <label htmlFor="category-select">
           Status: {statusValid && <span style={{ color: 'green' }}>Wine added</span>}
