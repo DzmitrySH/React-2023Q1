@@ -7,7 +7,7 @@ type ProductModalProps = {
   closeModal: () => void;
 };
 
-function ModalProductCard({ product, closeModal }: ProductModalProps) {
+function ModalWinesCard({ product, closeModal }: ProductModalProps) {
   const { winery, wine, rating, reviews, price, location, image } = product;
   const title = 'wine image none';
 
@@ -43,4 +43,4 @@ function ModalProductCard({ product, closeModal }: ProductModalProps) {
   );
 }
 
-export default ModalProductCard;
+export default ModalWinesCard;

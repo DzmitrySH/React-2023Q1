@@ -11,6 +11,7 @@ interface IWines {
 
 interface IWinesProps {
   product: IWines;
+  handleShowModal: (productId: number) => void;
 }
 
 interface ICardWine {

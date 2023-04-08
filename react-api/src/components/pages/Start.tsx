@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { IWines } from '../interface/interface';
 import './Start.css';
-import wines from '../../data/cards';
+// import wines from '../../data/cards';
 import WinesCard from './WinesCard';
+import ModalWinesCard from './ModalWinesCard';
 import { getWines, getWinesDetails } from '../Api/Api';
 import SpinnerLoader from './SpinnerLoad';
 
@@ -13,17 +14,38 @@ interface IStartPageProps {
 function Start({ changeNamePage }: IStartPageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [winesList, setWinesList] = useState<IWines[]>([]);
-  const [modaWines, setWinesProduct] = useState<IWines>();
+  const [modalWines, setWinesProduct] = useState<IWines>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState(localStorage.getItem('searchValue') ?? '');
   const searchRef = useRef<string>(searchInput);
 
+  const fetchWines = useCallback(async (search: string): Promise<void> => {
+    setIsLoading(true);
+    try {
+      const data = await getWines(search);
+      setWinesList(data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const fetchWinesDetails = useCallback(async (productId: number): Promise<void> => {
+    try {
+      const dataProduct = await getWinesDetails(productId);
+      setWinesProduct(dataProduct);
+      setIsModalOpen(true);
+    } catch (error) {
+      setIsModalOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchWines(searchRef.current);
+  }, [fetchWines]);
+
   useEffect(() => {
     changeNamePage('Start Page');
-    setWinesList(wines);
-    return () => {
-      localStorage.setItem('searchValue', searchRef.current || '');
-    };
   }, [changeNamePage]);
 
   useEffect(() => {
@@ -36,27 +58,44 @@ function Start({ changeNamePage }: IStartPageProps) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    localStorage.setItem('searchValue', searchRef.current || '');
+    fetchWines(searchRef.current);
   };
 
-  const filterWines = winesList.filter((win) =>
-    win.wine.toLowerCase().includes(searchInput.toLowerCase())
-  );
+  const handleShowModal = (productId: number) => {
+    fetchWinesDetails(productId);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
       <div className="wine-search">
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Search..." value={searchInput} onChange={handleChange} />
-          <button type="submit">Search</button>
+          <button data-testid="search-button" type="submit">
+            Search
+          </button>
         </form>
       </div>
-      <div className="wines-cards-container">
-        {filterWines.length ? (
-          filterWines.map((product) => <WinesCard product={product} key={product.id} />)
-        ) : (
-          <h3>No such wine...</h3>
-        )}
-      </div>
+      {isLoading ? (
+        <SpinnerLoader />
+      ) : (
+        <div className="wines-cards-container">
+          {isModalOpen && modalWines && (
+            <ModalWinesCard product={modalWines} closeModal={closeModal} />
+          )}
+          {winesList.length ? (
+            winesList.map((product) => (
+              <WinesCard product={product} key={product.id} handleShowModal={handleShowModal} />
+            ))
+          ) : (
+            <h3>No such wine...</h3>
+          )}
+        </div>
+      )}
     </>
   );
 }
