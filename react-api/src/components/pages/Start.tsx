@@ -1,15 +1,20 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { IWines } from '../interface/interface';
+import './Start.css';
 import wines from '../../data/cards';
 import WinesCard from './WinesCard';
-import React, { useEffect, useRef, useState } from 'react';
-import './Start.css';
-import { IWines } from '../interface/interface';
+import { getWines, getWinesDetails } from '../Api/Api';
+import SpinnerLoader from './SpinnerLoad';
 
 interface IStartPageProps {
   changeNamePage: (namePage: string) => void;
 }
 
 function Start({ changeNamePage }: IStartPageProps) {
+  const [isLoading, setIsLoading] = useState(true);
   const [winesList, setWinesList] = useState<IWines[]>([]);
+  const [modaWines, setWinesProduct] = useState<IWines>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState(localStorage.getItem('searchValue') ?? '');
   const searchRef = useRef<string>(searchInput);
 
