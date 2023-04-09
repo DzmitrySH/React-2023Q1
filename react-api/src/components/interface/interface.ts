@@ -1,12 +1,13 @@
 interface IWines {
-  id: number;
   winery: string;
   wine: string;
-  rating: number;
-  reviews: string;
-  price: number;
+  rating: {
+    average: number;
+    reviews: string;
+  };
   location: string;
   image: string;
+  id: number;
 }
 
 interface IWinesProps {

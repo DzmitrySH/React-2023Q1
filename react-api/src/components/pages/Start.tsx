@@ -14,7 +14,7 @@ interface IStartPageProps {
 function Start({ changeNamePage }: IStartPageProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [winesList, setWinesList] = useState<IWines[]>([]);
-  const [modalWines, setWinesProduct] = useState<IWines>();
+  const [modalWines, setModalWines] = useState<IWines>();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchInput, setSearchInput] = useState(localStorage.getItem('searchValue') ?? '');
   const searchRef = useRef<string>(searchInput);
@@ -33,7 +33,7 @@ function Start({ changeNamePage }: IStartPageProps) {
   const fetchWinesDetails = useCallback(async (productId: number): Promise<void> => {
     try {
       const dataProduct = await getWinesDetails(productId);
-      setWinesProduct(dataProduct);
+      setModalWines(dataProduct);
       setIsModalOpen(true);
     } catch (error) {
       setIsModalOpen(false);

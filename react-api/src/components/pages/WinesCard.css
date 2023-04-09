@@ -14,8 +14,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 280px;
-  width: 270px;
+  height: 450px;
+  width: 190px;
 }
 
 .wines-card__image img {
@@ -29,13 +29,13 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: flex-end;
+  align-items: center;
   flex-grow: 1;
 }
 
 .wines-card__info h2 {
   margin-top: 5px;
-  margin-bottom: 5px;
   font-size: 18px;
   font-weight: bold;
 }
@@ -45,6 +45,26 @@
   margin-bottom: 5px;
   font-size: 16px;
   line-height: 1.5;
+}
+
+.wines-card__button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.wines-card__button:hover {
+  background-color: #0069d9;
+}
+
+.wines-card__button:active {
+  background-color: rgb(101, 236, 83);
 }
 
 @media screen and (max-width: 1024px) {

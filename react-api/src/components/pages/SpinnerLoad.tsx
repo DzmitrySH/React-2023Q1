@@ -12,14 +12,16 @@ const override: CSSProperties = {
 
 function SpinnerLoad() {
   return (
-    <ClipLoader
-      color={'#ffffff'}
-      loading={true}
-      cssOverride={override}
-      size={200}
-      aria-label="Loading Spinner"
-      data-testid="loader"
-    />
+    <div className="loader">
+      <ClipLoader
+        color={'#ffffff'}
+        loading={true}
+        cssOverride={override}
+        size={200}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   );
 }
 
