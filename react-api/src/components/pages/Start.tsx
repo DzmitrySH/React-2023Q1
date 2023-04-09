@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { IWines } from '../interface/interface';
 import './Start.css';
-// import wines from '../../data/cards';
 import WinesCard from './WinesCard';
 import ModalWinesCard from './ModalWinesCard';
 import { getWines, getWinesDetails } from '../Api/Api';

@@ -17,7 +17,7 @@ function StatusWine({ register, error }: IinputStatusWineProps) {
       </div>
       <div className="radio-buttons">
         <label>
-          <input type="radio" value="new" data-testid="new-input" {...register} />
+          <input type="radio" value="new" data-testid="status-input" {...register} />
           New product
         </label>
         <label>

@@ -17,6 +17,6 @@ test('Wine title and category', () => {
   const { getByText } = render(<CardForm product={productTest} />);
   const titleElement = getByText(/Wines title/i);
   const categoryElement = getByText(/Wines description/i);
-  // expect(titleElement).toBeInTheDocument();
-  // expect(categoryElement).toBeInTheDocument();
+  expect(titleElement).toBeInTheDocument();
+  expect(categoryElement).toBeInTheDocument();
 });
