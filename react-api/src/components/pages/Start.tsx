@@ -21,7 +21,7 @@ function Start({ changeNamePage }: IStartPageProps) {
   const fetchWines = useCallback(async (search: string): Promise<void> => {
     setIsLoading(true);
     try {
-      const data = await getWines(search);
+      const data = await getWines(!search ? search : '&wine=' + search);
       setWinesList(data);
       setIsLoading(false);
     } catch (error) {
@@ -73,7 +73,12 @@ function Start({ changeNamePage }: IStartPageProps) {
     <>
       <div className="wine-search">
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Search..." value={searchInput} onChange={handleChange} />
+          <input
+            type="text"
+            placeholder="Search Wine..."
+            value={searchInput}
+            onChange={handleChange}
+          />
           <button data-testid="search-button" type="submit">
             Search
           </button>
@@ -86,9 +91,9 @@ function Start({ changeNamePage }: IStartPageProps) {
           {isModalOpen && modalWines && (
             <ModalWinesCard product={modalWines} closeModal={closeModal} />
           )}
-          {winesList.length ? (
-            winesList.map((product) => (
-              <WinesCard product={product} key={product.id} handleShowModal={handleShowModal} />
+          {winesList.length > 0 ? (
+            winesList.map((products) => (
+              <WinesCard product={products} key={products.id} handleShowModal={handleShowModal} />
             ))
           ) : (
             <h3>No such wine...</h3>
