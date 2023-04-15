@@ -1,40 +1,51 @@
-import { IWines } from 'components/interface/interface';
 import React from 'react';
+import { getWinesDetailsQuery } from '../../components/Api/Api';
+import SpinnerLoad from './SpinnerLoad';
 import './ModalWinesCard.css';
 
 type ProductModalProps = {
-  product: IWines;
+  productID: number;
   closeModal: () => void;
 };
 
-function ModalWinesCard({ product, closeModal }: ProductModalProps) {
-  const { winery, wine, rating, location, image } = product;
-  const title = 'wine image none';
+function ModalWinesCard({ productID, closeModal }: ProductModalProps) {
+  const { data: product, isLoading, isError } = getWinesDetailsQuery(productID);
 
-  const overlayClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const overlayClick = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (event.target === event.currentTarget) {
       closeModal();
     }
   };
 
-  const modalCloseClick = () => {
-    closeModal();
-  };
+  if (isLoading) return <SpinnerLoad />;
+
+  if (isError) {
+    return (
+      <div className="wine-modal" onClick={overlayClick} data-testid="modal">
+        <div className="wine-modal__content">
+          <button className="product-modal__close-btn" onClick={overlayClick}>
+            &#10006;
+          </button>
+          Wines not Loading...
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="wine-modal" onClick={overlayClick}>
+    <div className="wine-modal" onClick={overlayClick} data-testid="modal">
       <div className="wine-modal__content">
         <div className="wine-modal__image">
-          <img src={image} alt={title} />
+          <img src={product?.thumbnail ?? ''} alt={product?.title} />
         </div>
         <div className="wine-modal__info">
-          <h2>Producer: {winery}</h2>
-          <p>Wine: {wine}</p>
-          <p>Rating: {rating.average}</p>
-          <p>Review: {rating.reviews}</p>
-          <p>Location: {location}</p>
+          <h2>Producer: {product?.winery}</h2>
+          <p>Wine: {product?.wine}</p>
+          <p>Rating: {product?.rating.average}</p>
+          <p>Review: {product?.rating.reviews}</p>
+          <p>Location: {product?.location}</p>
         </div>
-        <button className="wine-modal__close-btn" onClick={modalCloseClick}>
+        <button className="wine-modal__close-btn" onClick={overlayClick}>
           &#10006;
         </button>
       </div>
