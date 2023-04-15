@@ -2,15 +2,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IWines } from '../interface/interface';
 import type { IResponseWinesApi } from '../interface/interface';
 
-export const BASE_URL = 'https://api.sampleapis.com/wines/';
+export const BASE_URL = 'https://api.sampleapis.com/';
 
 export const productApi = createApi({
-  reducerPath: 'productApi',
+  reducerPath: 'products',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getWines: builder.query<IWines[], string>({
       query: (search) => ({
-        url: 'winery=Toro Albalá',
+        url: 'wines/?winery=Toro Albalá',
         params: { q: search },
       }),
       transformResponse: (response: IResponseWinesApi) => response.products ?? [],
@@ -23,4 +23,4 @@ export const productApi = createApi({
   }),
 });
 
-export const { getWinesQuery, getWinesDetailsQuery } = productApi;
+export const { useGetWinesQuery, useGetWinesDetailsQuery } = productApi;

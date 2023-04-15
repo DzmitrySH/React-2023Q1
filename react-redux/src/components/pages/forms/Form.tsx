@@ -3,7 +3,7 @@ import React from 'react';
 import './Form.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { useActions } from '../../redux/hooks';
+import { useActions } from '../../redux/useActions';
 import CardForm from './CardForm';
 import InputForm from './ImputForm';
 
