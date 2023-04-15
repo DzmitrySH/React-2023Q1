@@ -1,24 +1,26 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IWines } from '../interface/interface';
+import type { IResponseWinesApi } from '../interface/interface';
 
-async function getWines(search: string): Promise<IWines[]> {
-  try {
-    const res = await fetch(`https://api.sampleapis.com/wines/port/?winery=Toro Albalá${search}`);
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log('Data is not fetched');
-    return [];
-  }
-}
+export const BASE_URL = 'https://api.sampleapis.com/wines/';
 
-async function getWinesDetails(productId: number): Promise<IWines | undefined> {
-  try {
-    const res = await fetch(`https://api.sampleapis.com/wines/port/${productId}`);
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    console.log('Data is not fetched');
-  }
-}
+export const productApi = createApi({
+  reducerPath: 'productApi',
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  endpoints: (builder) => ({
+    getWines: builder.query<IWines[], string>({
+      query: (search) => ({
+        url: 'winery=Toro Albalá',
+        params: { q: search },
+      }),
+      transformResponse: (response: IResponseWinesApi) => response.products ?? [],
+    }),
+    getWinesDetails: builder.query<IWines, number>({
+      query: (id) => ({
+        url: `port/${id}`,
+      }),
+    }),
+  }),
+});
 
-export { getWines, getWinesDetails };
+export const { getWinesQuery, getWinesDetailsQuery } = productApi;
