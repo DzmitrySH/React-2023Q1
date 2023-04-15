@@ -1,15 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './About.css';
 
-interface IAboutPage {
-  changeNamePage: (namePage: string) => void;
-}
-
-function About({ changeNamePage }: IAboutPage) {
-  useEffect(() => {
-    changeNamePage('About Page');
-  }, [changeNamePage]);
-
+function About() {
   return (
     <>
       <div className="content-about">

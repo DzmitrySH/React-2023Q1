@@ -1,15 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './NotFound.css';
 
-interface IPageError {
-  changeNamePage: (namePage: string) => void;
-}
-
-function NotFound({ changeNamePage }: IPageError) {
-  useEffect(() => {
-    changeNamePage('NotFound');
-  }, [changeNamePage]);
-
+function NotFound() {
   return (
     <>
       <div className="content-notfound">
