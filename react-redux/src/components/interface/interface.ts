@@ -65,6 +65,10 @@ interface IFormData {
   imageFile: FileList;
 }
 
+interface NavLinks {
+  [key: string]: string | undefined;
+}
+
 enum CategoryEnum {
   starswine = 'stars wine',
   oldwine = 'old wine',
@@ -80,5 +84,6 @@ export {
   IFormWineProps,
   IFormInputState,
   IFormData,
+  NavLinks,
   CategoryEnum,
 };
