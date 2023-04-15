@@ -1,21 +1,18 @@
-import './Form.css';
 import { ICardWine } from 'components/interface/interface';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import './Form.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useActions } from '../../redux/hooks';
 import CardForm from './CardForm';
 import InputForm from './ImputForm';
 
-interface IFormWineProps {
-  changeNamePage: (namePage: string) => void;
-}
+function Form() {
+  const { addToStateFormProducts } = useActions();
+  const formCard = useSelector<RootState, ICardWine[]>((state) => state.form);
 
-function Form({ changeNamePage }: IFormWineProps) {
-  useEffect(() => {
-    changeNamePage('Form Page');
-  });
-
-  const [products, setWinProduct] = useState<ICardWine[]>([]);
-  const changeProduct = (newWine: ICardWine) => {
-    setWinProduct([...products, newWine]);
+  const changeProduct = (newProduct: ICardWine) => {
+    addToStateFormProducts(newProduct);
   };
 
   return (
@@ -23,8 +20,8 @@ function Form({ changeNamePage }: IFormWineProps) {
       <h3>Form page</h3>
       <InputForm changeProduct={changeProduct} />
       <div className="form-cards-container">
-        {products.length ? (
-          products.map((product) => {
+        {formCard.length ? (
+          formCard.map((product) => {
             return <CardForm key={product.id} product={{ ...product }} />;
           })
         ) : (

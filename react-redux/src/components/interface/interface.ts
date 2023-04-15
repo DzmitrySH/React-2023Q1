@@ -84,6 +84,6 @@ export {
   IFormWineProps,
   IFormInputState,
   IFormData,
-  NavLinks,
   CategoryEnum,
+  NavLinks,
 };
