@@ -10,13 +10,6 @@ interface IWines {
   id: number;
 }
 
-interface IResponseWinesApi {
-  products: IWines[] | null;
-  total: number;
-  skip: number;
-  limit: number;
-}
-
 interface IWinesProps {
   product: IWines;
 }
@@ -77,7 +70,6 @@ enum CategoryEnum {
 
 export {
   IWines,
-  IResponseWinesApi,
   IWinesProps,
   ICardWine,
   ICardWineProps,

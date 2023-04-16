@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IWines } from '../interface/interface';
-import type { IResponseWinesApi } from '../interface/interface';
+// import type { IResponseWinesApi } from '../interface/interface';
 
 export const productApi = createApi({
   reducerPath: 'productApi',
@@ -8,10 +8,11 @@ export const productApi = createApi({
   endpoints: (builder) => ({
     getWines: builder.query<IWines[], string>({
       query: (search) => ({
-        url: 'wines/port/?winery=Toro Albalá',
-        params: { q: !search ? search : '&wine=' + search },
+        url: !search
+          ? 'wines/port/?winery=Toro Albalá'
+          : 'wines/port/?winery=Toro Albalá&wine=' + search,
       }),
-      transformResponse: (response: IResponseWinesApi) => response.products ?? [],
+      transformResponse: (response: IWines[] | null) => response ?? [],
     }),
     getWinesDetails: builder.query<IWines, number>({
       query: (id) => ({
