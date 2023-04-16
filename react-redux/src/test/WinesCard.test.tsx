@@ -1,7 +1,9 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { render, screen, waitFor } from '@testing-library/react';
+import { store } from '../components/redux/store';
 import WinesCard from '../components/pages/WinesCard';
-import { vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
 describe('WinesCard', () => {
   const mockProduct = {
@@ -15,25 +17,29 @@ describe('WinesCard', () => {
     image: 'https://example.com/image.jpg',
     id: 1,
   };
-  const handleShowModal = vi.fn();
 
   test('renders without crashing', () => {
-    render(<WinesCard product={mockProduct} handleShowModal={handleShowModal} />);
+    render(<WinesCard product={mockProduct} />);
   });
 
   test('renders product details correctly', () => {
-    render(<WinesCard product={mockProduct} handleShowModal={handleShowModal} />);
+    render(<WinesCard product={mockProduct} />);
     expect(screen.getByText(`Producer: ${mockProduct.winery}`)).toBeInTheDocument();
     expect(screen.getByText(`Wine: ${mockProduct.wine}`)).toBeInTheDocument();
     expect(screen.getByText(`Location: ${mockProduct.location}`)).toBeInTheDocument();
   });
 
-  test('calls handleShowModal when clicking show button', () => {
-    render(<WinesCard product={mockProduct} handleShowModal={handleShowModal} />);
+  test('calls handleShowModal when clicking show button', async () => {
+    render(
+      <Provider store={store}>
+        <WinesCard product={mockProduct} />
+      </Provider>
+    );
     const showModalButton = screen.getByRole('button');
-    fireEvent.click(showModalButton);
-
-    expect(handleShowModal).toHaveBeenCalled();
-    expect(handleShowModal).toHaveBeenCalledTimes(1);
+    userEvent.click(showModalButton);
+    await waitFor(() => {
+      const divModal = screen.getByTestId('modal');
+      expect(divModal).toBeInTheDocument();
+    });
   });
 });

@@ -21,7 +21,7 @@ describe('<Header />', () => {
     );
 
     const homeLink = screen.getByRole('link', { name: /Start Page/i });
-    const aboutLink = screen.getByRole('link', { name: /AboutPage/i });
+    const aboutLink = screen.getByRole('link', { name: /About Page/i });
     expect(homeLink.getAttribute('href')).toBe('/');
     expect(aboutLink.getAttribute('href')).toBe('/about');
   });

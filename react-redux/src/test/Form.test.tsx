@@ -10,6 +10,6 @@ test('renders Form page header', () => {
       <Form />
     </Provider>
   );
-  const headerElement = getByText(/Form page/i);
+  const headerElement = getByText(/Form/i);
   expect(headerElement).toBeInTheDocument();
 });
