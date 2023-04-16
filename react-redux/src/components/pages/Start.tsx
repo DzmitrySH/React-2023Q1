@@ -24,7 +24,6 @@ function Start() {
 
   return (
     <>
-      <h3>Start page</h3>
       <div className="wine-search">
         <form onSubmit={handleSubmit}>
           <input

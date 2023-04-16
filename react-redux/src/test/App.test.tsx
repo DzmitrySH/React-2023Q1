@@ -19,7 +19,7 @@ describe('App component', () => {
       { wrapper: BrowserRouter }
     );
 
-    const linkAbout = screen.getByText(/AboutPage/);
+    const linkAbout = screen.getByText(/About/i);
     expect(linkAbout).toBeInTheDocument();
 
     fireEvent.click(linkAbout);

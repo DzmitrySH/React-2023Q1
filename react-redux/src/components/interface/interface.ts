@@ -11,7 +11,7 @@ interface IWines {
 }
 
 interface IResponseWinesApi {
-  products?: IWines[] | null;
+  products: IWines[] | null;
   total: number;
   skip: number;
   limit: number;

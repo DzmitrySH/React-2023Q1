@@ -1,46 +1,60 @@
+import React from 'react';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+import { cleanup } from '@testing-library/react';
+import { renderWithProviders } from '../test/utilies';
+import ModalWinesCard from '../components/pages/ModalWinesCard';
 import { vi } from 'vitest';
-import { getWines, getWinesDetails } from '../components/Api/Api';
 
-describe('getProducts and Details functions', () => {
-  beforeEach(() => {
-    global.fetch = vi.fn();
+const mockserver = setupServer(
+  rest.get(`'https://api.sampleapis.com/wines/port/:id`, (req, res, ctx) => {
+    const query = Number(req.params.id);
+    if (query === 2) {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          winery: 'Toro Albalá',
+          wine: 'Don PX Convento Selección 1946',
+          rating: {
+            average: 4.9,
+            reviews: '232 ratings',
+          },
+          location: 'Spain\n·\nMontilla-Moriles',
+          image: 'https://images.vivino.com/thumbs/ni3gQdaBR0eR1jwck1LaWA_pb_x300.png',
+          id: 2,
+        })
+      );
+    } else if (query !== 2) return res(ctx.status(404), ctx.json({ error: 'error' }));
+  })
+);
+
+beforeAll(() => mockserver.listen());
+
+afterEach(() => {
+  mockserver.resetHandlers();
+  cleanup();
+});
+
+afterAll(() => mockserver.close());
+
+describe('Extended card component', () => {
+  const closeModal = vi.fn();
+
+  test('yes fetch card by id from api', async () => {
+    const { findByText } = renderWithProviders(
+      <ModalWinesCard productID={2} closeModal={closeModal} />
+    );
+    expect(await findByText('Producer: Toro Albalá')).toBeInTheDocument();
+    expect(await findByText('Wine: Don PX Convento Selección 1946')).toBeInTheDocument();
+    expect(await findByText('Rating: 4.9')).toBeInTheDocument();
+    expect(await findByText('Review: 232 ratings')).toBeInTheDocument();
+    expect(await findByText('Location: Spain\n·\nMontilla-Moriles')).toBeInTheDocument();
   });
 
-  afterEach(() => {
-    vi.resetAllMocks();
-  });
-
-  test('getProducts returns an array of products', async () => {
-    const mockResponseProducts = {
-      winery: 'Maselva',
-      wine: 'Merlot',
-      rating: { average: 4.9 },
-      id: 1,
-    };
-    const mockJsonPromiseProducts = Promise.resolve(mockResponseProducts);
-    const mockFetchPromiseProducts = Promise.resolve({
-      json: () => mockJsonPromiseProducts,
-    });
-    global.fetch = vi.fn().mockImplementation(() => mockFetchPromiseProducts);
-    const prod = await getWines('Merlot');
-    expect(prod).toHaveProperty('id');
-    expect(prod).toHaveProperty('winery');
-    expect(prod).toHaveProperty('wine');
-    expect(prod).toHaveProperty('rating.average');
-  });
-
-  test('getProductDetails returns a product object', async () => {
-    const mockProduct = { winery: 'Maselva', rating: { average: 4.9 }, id: 1 };
-    const mockResponseProduct = Promise.resolve(mockProduct);
-    const mockFetchPromiseProduct = Promise.resolve({
-      json: () => mockResponseProduct,
-    });
-    global.fetch = vi.fn().mockImplementation(() => mockFetchPromiseProduct);
-
-    const product = await getWinesDetails(1);
-    expect(typeof product).toBe('object');
-    expect(product).toHaveProperty('id');
-    expect(product).toHaveProperty('winery');
-    expect(product).toHaveProperty('rating.average');
+  test('not fetch card by id from api', async () => {
+    const { findByText } = renderWithProviders(
+      <ModalWinesCard productID={12345678} closeModal={closeModal} />
+    );
+    expect(await findByText('Wines not Loading...')).toBeInTheDocument();
   });
 });

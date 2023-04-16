@@ -12,7 +12,7 @@ describe('<Start />', () => {
         <Start />
       </Provider>
     );
-    const searchInput = getByPlaceholderText('Search...') as HTMLInputElement;
+    const searchInput = getByPlaceholderText('Search Wine...') as HTMLInputElement;
     expect(searchInput).toBeInTheDocument();
     const searchButton = screen.getByTestId('search-button');
     expect(searchButton).toBeInTheDocument();

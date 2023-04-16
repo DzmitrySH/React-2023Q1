@@ -4,14 +4,14 @@ import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
-  const navLinks: NavLinks = { '/': 'Start', '/about': 'AboutPage', '/form': 'Form' };
+  const navLinks: NavLinks = { '/': 'Start', '/about': 'About', '/form': 'Form' };
   const location = useLocation();
   return (
     <>
       <header className="header">
         <nav className="page-navigation">
           <div className="page-navigation-links">
-            <NavLink to="/" data-testid="home">
+            <NavLink to="/" data-testid="start">
               Start Wines
             </NavLink>
             <NavLink to="/about">About Page</NavLink>

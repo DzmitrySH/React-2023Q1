@@ -10,7 +10,7 @@ describe('<Header />', () => {
         <Header />
       </MemoryRouter>
     );
-    expect(screen.queryAllByText(`Current Page: Home`)).toBeTruthy();
+    expect(screen.getByText(`Page: Start`)).toBeTruthy();
   });
 
   test('Render the correct navigation links', () => {
@@ -20,7 +20,7 @@ describe('<Header />', () => {
       </MemoryRouter>
     );
 
-    const homeLink = screen.getByRole('link', { name: /Start Page/i });
+    const homeLink = screen.getByRole('link', { name: /Start Wines/i });
     const aboutLink = screen.getByRole('link', { name: /About Page/i });
     expect(homeLink.getAttribute('href')).toBe('/');
     expect(aboutLink.getAttribute('href')).toBe('/about');
