@@ -4,7 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
-  const navLinks: NavLinks = { '/': 'Home', '/about': 'About Us', '/form': 'Form' };
+  const navLinks: NavLinks = { '/': 'Start', '/about': 'AboutPage', '/form': 'Form' };
   const location = useLocation();
   return (
     <>

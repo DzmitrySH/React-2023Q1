@@ -1,17 +1,28 @@
-import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Header from '../components/pages/Header';
 import { MemoryRouter } from 'react-router';
 
 describe('<Header />', () => {
-  test('Header', () => {
-    const namePage = 'Start Page';
+  test('Header component include', () => {
     render(
       <MemoryRouter>
-        <Header namePage={namePage} />
+        <Header />
       </MemoryRouter>
     );
-    expect(screen.queryAllByText(`${namePage}`)).toBeTruthy();
+    expect(screen.queryAllByText(`Current Page: Home`)).toBeTruthy();
+  });
+
+  test('Render the correct navigation links', () => {
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    );
+
+    const homeLink = screen.getByRole('link', { name: /Start Page/i });
+    const aboutLink = screen.getByRole('link', { name: /AboutPage/i });
+    expect(homeLink.getAttribute('href')).toBe('/');
+    expect(aboutLink.getAttribute('href')).toBe('/about');
   });
 });
