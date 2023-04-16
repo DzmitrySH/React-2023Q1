@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IWines } from '../interface/interface';
-// import type { IResponseWinesApi } from '../interface/interface';
 
 export const productApi = createApi({
   reducerPath: 'productApi',

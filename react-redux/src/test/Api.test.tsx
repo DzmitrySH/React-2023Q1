@@ -2,12 +2,12 @@ import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { cleanup } from '@testing-library/react';
-import { renderWithProviders } from '../test/utilies';
+import { renderWithProviders } from './utilies';
 import ModalWinesCard from '../components/pages/ModalWinesCard';
 import { vi } from 'vitest';
 
 const mockserver = setupServer(
-  rest.get(`'https://api.sampleapis.com/wines/port/:id`, (req, res, ctx) => {
+  rest.get('https://api.sampleapis.com/wines/port/:id', (req, res, ctx) => {
     const query = Number(req.params.id);
     if (query === 2) {
       return res(
