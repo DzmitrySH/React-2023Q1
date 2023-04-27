@@ -21,7 +21,7 @@ async function createServer() {
     try {
       let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
       template = await vite.transformIndexHtml(url, template);
-      const html = template.split(`<!--ssr-inject-->`);
+      const html = template.split(`<!--ssr-ssg-->`);
 
       const { render } = await vite.ssrLoadModule('./src/point-entry-server.tsx');
 
