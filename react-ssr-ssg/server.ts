@@ -23,7 +23,7 @@ async function createServer() {
       template = await vite.transformIndexHtml(url, template);
       const html = template.split(`<!--ssr-inject-->`);
 
-      const { render } = await vite.ssrLoadModule('/src/point-entry-server.tsx');
+      const { render } = await vite.ssrLoadModule('./src/point-entry-server.tsx');
 
       const { pipe } = await render(url, {
         onShellReady() {
