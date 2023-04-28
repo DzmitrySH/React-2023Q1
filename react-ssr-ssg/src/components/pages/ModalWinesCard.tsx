@@ -23,7 +23,7 @@ function ModalWinesCard({ productID, closeModal }: ProductModalProps) {
     return (
       <div className="wine-modal" onClick={overlayClick} data-testid="modal">
         <div className="wine-modal__content">
-          <button className="product-modal__close-btn" onClick={overlayClick}>
+          <button className="wine-modal__close-btn" onClick={overlayClick}>
             &#10006;
           </button>
           Wines not Loading...

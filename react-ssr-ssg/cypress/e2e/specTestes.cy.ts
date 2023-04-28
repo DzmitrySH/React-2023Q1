@@ -4,7 +4,7 @@ import '@cypress/code-coverage/support';
 describe('e2e Testing', () => {
   it('Visits http://localhost:3000/', () => {
     cy.visit('/');
-    cy.contains('About US').click();
+    cy.contains('About Page').click();
     cy.contains('Form Page').click();
     cy.contains('Start Wines').click();
   });
@@ -18,7 +18,7 @@ describe('e2e Testing', () => {
     cy.get('[data-testid="date-input"]').type('2023-04-28');
     cy.get('[data-testid="rule-input"]').click();
     cy.get('[type="radio"]').last().check();
-    cy.get('[data-testid="category-select-input"]').select('starswine');
+    cy.get('[data-testid="category-select-input"]').select('stars wine');
     cy.get('input[type=file]').selectFile('src/assets/bottle.png', { force: true });
     cy.get('[type="submit"]').click();
   });
@@ -26,7 +26,7 @@ describe('e2e Testing', () => {
     cy.visit('/');
     cy.contains('Producer: Toro Albalá').click();
     cy.contains('Rating: 4.7');
-    cy.get('[class="product-modal__close-btn"]').click();
+    cy.get('[class="wine-modal__close-btn"]').click();
   });
   it('search wines in magazine', () => {
     cy.visit('/');
