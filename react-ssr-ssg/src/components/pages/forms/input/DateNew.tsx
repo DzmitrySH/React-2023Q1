@@ -13,7 +13,7 @@ function DateNew({ register, error }: InputDateProps) {
         Date of harvest year:
         {error && <span className="form-input-span-error">No date or product</span>}
       </label>
-      <input type="date" id="date-input" {...register} />
+      <input type="date" id="date-input" data-testid="date-input" {...register} />
     </div>
   );
 }

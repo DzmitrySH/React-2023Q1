@@ -18,6 +18,7 @@ function Wine({ register, error }: IinputWineProps) {
       <textarea
         {...register}
         id="description-input"
+        data-testid="description-input"
         placeholder="description product: Wine is very..."
       />
     </div>

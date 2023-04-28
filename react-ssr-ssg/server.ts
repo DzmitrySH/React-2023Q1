@@ -19,7 +19,7 @@ async function createServer() {
     const url = req.originalUrl;
 
     try {
-      let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+      let template = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
       template = await vite.transformIndexHtml(url, template);
       const html = template.split(`<!--ssr-ssg-->`);
 
