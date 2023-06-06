@@ -7,9 +7,7 @@ export const productApi = createApi({
   endpoints: (builder) => ({
     getWines: builder.query<IWines[], string>({
       query: (search) => ({
-        url: !search
-          ? 'wines/port/?winery=Toro Albalá'
-          : 'wines/port/?winery=Toro Albalá&wine=' + search,
+        url: !search ? 'wines/port/?_limit=40' : 'wines/port/?_limit=40&wine=' + search,
       }),
       transformResponse: (response: IWines[] | null) => response ?? [],
     }),

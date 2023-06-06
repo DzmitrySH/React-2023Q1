@@ -2,6 +2,7 @@ import React from 'react';
 import { useGetWinesDetailsQuery } from '../../components/Api/Api';
 import SpinnerLoad from './SpinnerLoad';
 import './ModalWinesCard.css';
+import defaults from '../../assets/bottle.png';
 
 type ProductModalProps = {
   productID: number;

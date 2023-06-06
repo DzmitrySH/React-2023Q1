@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IWinesProps } from 'components/interface/interface';
 import ModalWinesCard from './ModalWinesCard';
 import './WinesCard.css';
+import defaults from '../../assets/bottle.png';
 
 function WinesCard({ product }: IWinesProps) {
   const [thumbnailError, setThumbnailError] = useState(false);
@@ -20,17 +21,11 @@ function WinesCard({ product }: IWinesProps) {
 
   const { winery, wine, rating, location, image, id } = product;
   const title = 'wine image none';
-  const defaults = '☺';
 
   return (
     <>
       {isModalOpen && <ModalWinesCard productID={product.id} closeModal={closeModal} />}
-      <div
-        data-testid={`wines-card${id}`}
-        className="wines-card"
-        id={`wines-card${id}`}
-        onClick={() => handleShowModal()}
-      >
+      <div data-testid={`wines-card${id}`} className="wines-card" id={`wines-card${id}`}>
         <div className="wines-card__image">
           <img src={thumbnailError ? defaults : image} alt={title} onError={handleThumbnailError} />
         </div>
@@ -40,7 +35,9 @@ function WinesCard({ product }: IWinesProps) {
           <p>Rating: {rating.average}</p>
           <p>Review: {rating.reviews}</p>
           <p>Location: {location}</p>
-          <button className="wines-card__button">Show more</button>
+          <button className="wines-card__button" onClick={() => handleShowModal()}>
+            Show more
+          </button>
         </div>
       </div>
     </>
