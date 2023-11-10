@@ -1,0 +1,52 @@
+import React, { ChangeEvent, FormEvent, useState } from 'react';
+import WinesCard from './WinesCard';
+import SpinnerLoader from './SpinnerLoad';
+import { useGetWinesQuery } from '../Api/Api';
+import './Start.css';
+import { useActions } from '../redux/useActions';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+
+function Start() {
+  const { changeSearch } = useActions();
+  const stateSearch = useSelector<RootState, string>((state) => state.search.stateSearch);
+  const [searchInput, setSearchInput] = useState(stateSearch);
+  const { data: winesList, isLoading } = useGetWinesQuery(stateSearch);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    changeSearch(searchInput);
+  };
+
+  return (
+    <>
+      <div className="wine-search">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search Wine..."
+            value={searchInput}
+            onChange={handleChange}
+          />
+          <button data-testid="search-button" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+      {isLoading && <SpinnerLoader />}
+      <div className="wines-cards-container">
+        {winesList?.length ? (
+          winesList.map((products) => <WinesCard product={products} key={products.id} />)
+        ) : (
+          <h3>No such wine...</h3>
+        )}
+      </div>
+    </>
+  );
+}
+
+export default Start;
